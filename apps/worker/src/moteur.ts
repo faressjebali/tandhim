@@ -304,6 +304,7 @@ export async function lancerMoteur(
     const taches = listerTaches(db, { ouvertes: true });
     const calendrier = loadCalendarData(db);
     const prompt = construirePrompt({
+      deleguee: env.TANDHIM_DELEGUEE,
       aujourdhui: formatTunis(new Date(), 'EEEE d MMMM yyyy'),
       semaine: weekLabel(aujourdhui, calendrier),
       matieres: matieres.map((m) => ({

@@ -75,6 +75,7 @@ for (let essai = 1; essai <= essais; essai++) {
   for (let i = 0; i < cas.length; i += 6) {
     const lot = cas.slice(i, i + 6);
     const prompt = construirePrompt({
+      deleguee: env.TANDHIM_DELEGUEE,
       // Chaque cas porte sa propre date ; « aujourd'hui » = la date du premier cas du lot.
       aujourdhui: formatTunis(instant(lot[0]!), 'EEEE d MMMM yyyy'),
       semaine: '',

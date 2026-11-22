@@ -13,6 +13,8 @@ export const envSchema = z.object({
   TANDHIM_APERCU: z.enum(['0', '1']).optional(),
   /** Mode démo : horloge figée « AAAA-MM-JJTHH:MM » (heure de Tunis), pour des captures cohérentes. */
   TANDHIM_DEMO_DATE: z.string().optional(),
+  /** Nom de la déléguée, cité dans le prompt de l'IA (donnée personnelle : seulement dans .env). */
+  TANDHIM_DELEGUEE: z.string().optional(),
 
   APP_PASSWORD_HASH: z.string().optional(),
   SESSION_SECRET: z.string().min(32).optional(),

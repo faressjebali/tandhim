@@ -1,0 +1,104 @@
+[
+  {
+    "id": "groupes-deux-dates",
+    "type": "mail reçu",
+    "date": "2026-11-23T10:00",
+    "de": "DEF INSAT",
+    "titre": "Validation TP3 PRM",
+    "texte": "Bonjour, la validation du TP3 de Protocoles des réseaux mobiles aura lieu : RT4/1 le jeudi 10 décembre à 14h, RT4/2 le vendredi 11 décembre à 14h. Cordialement.",
+    "attendu": [
+      { "groupe": "RT4/1", "date": "2026-12-10", "matiere": "PRM" },
+      { "groupe": "RT4/2", "date": "2026-12-11", "matiere": "PRM" }
+    ]
+  },
+  {
+    "id": "groupe-2-rattrapage-darija",
+    "type": "messages Messenger",
+    "date": "2026-11-24T10:00",
+    "de": "Étudiant A",
+    "titre": "Groupe — 24 nov.",
+    "texte": "[10:02] Étudiant A : chabeb grp 2 3andhom rattrapage TNS sebt 8h, grp 1 ma3andhomch",
+    "attendu": [{ "groupe": "RT4/2", "date": "2026-11-28", "matiere": "TNS" }]
+  },
+  {
+    "id": "toute-la-filiere",
+    "type": "mail reçu",
+    "date": "2026-11-25T09:00",
+    "de": "DEF INSAT",
+    "titre": "DS Machine Learning",
+    "texte": "Le DS de Machine Learning aura lieu le lundi 14 décembre à 9h, salle A6, pour toute la filière RT4.",
+    "attendu": [{ "groupe": "RT4", "date": "2026-12-14", "matiere": "ML" }]
+  },
+  {
+    "id": "g1-ghodwa",
+    "type": "messages Messenger",
+    "date": "2026-11-26T18:00",
+    "de": "Déléguée",
+    "titre": "Groupe — 26 nov.",
+    "texte": "[18:05] Déléguée : G1 : remise du CR TP2 THD ghodwa avant minuit par mail",
+    "attendu": [{ "groupe": "RT4/1", "date": "2026-11-27", "matiere": "THD" }]
+  },
+  {
+    "id": "jey-rt4-1",
+    "type": "messages Messenger",
+    "date": "2026-11-23T12:00",
+    "de": "Étudiant B",
+    "titre": "Groupe — 23 nov.",
+    "texte": "[12:10] Étudiant B : lkhmis jey validation FW lel RT4-1, ma tnsewech",
+    "attendu": [{ "groupe": "RT4/1", "date": "2026-12-03", "matiere": "FW" }]
+  },
+  {
+    "id": "bavardage",
+    "type": "messages Messenger",
+    "date": "2026-11-24T21:00",
+    "de": "Étudiant C",
+    "titre": "Groupe — 24 nov.",
+    "texte": "[21:03] Étudiant C : chkoun 3andou les slides mta3 cours 3 ?\n[21:05] Étudiant D : mrigel merci",
+    "attendu": []
+  },
+  {
+    "id": "premier-groupe-en-ligne",
+    "type": "mail reçu",
+    "date": "2026-11-24T16:00",
+    "de": "Mme Rania Jaziri",
+    "titre": "Séance de demain",
+    "texte": "1er groupe : la séance de PU de demain se fera en ligne à 9h45 sur Meet. 2ème groupe : présentiel comme d'habitude.",
+    "attendu": [{ "groupe": "RT4/1", "date": "2026-11-25", "matiere": "PU" }]
+  },
+  {
+    "id": "sondage-clos",
+    "type": "sondage Messenger",
+    "date": "2026-11-24T10:00",
+    "de": "Déléguée",
+    "titre": "Sondage : Rattrapage RHD ?",
+    "texte": "Sondage lancé par Déléguée le mardi 24 novembre à 10:00 : « Rattrapage RHD avec M. Riahi ? »\nOptions : samedi 8h (20 voix) ; samedi 10h (3 voix)\n23 votant(s). En tête : samedi 8h. Sondage clos.",
+    "attendu": [{ "groupe": "RT4", "date": "2026-11-28", "matiere": "RHD" }]
+  },
+  {
+    "id": "hedha-toute-la-filiere",
+    "type": "messages Messenger",
+    "date": "2026-11-23T09:00",
+    "de": "Déléguée",
+    "titre": "Groupe — 23 nov.",
+    "texte": "[09:01] Déléguée : rappel : vendredi hedha DS Droit 11h30 amphi 1",
+    "attendu": [{ "groupe": "RT4", "date": "2026-11-27", "matiere": "DROIT" }]
+  },
+  {
+    "id": "groupe-2-seulement",
+    "type": "annonce Classroom",
+    "date": "2026-11-23T08:00",
+    "de": "Mme Salma Haddad",
+    "titre": "TP4",
+    "texte": "Pour le groupe 2 uniquement : le TP4 est à rendre sur Classroom le 4 décembre.",
+    "attendu": [{ "groupe": "RT4/2", "date": "2026-12-04", "matiere": "STR" }]
+  },
+  {
+    "id": "sous-groupes",
+    "type": "mail reçu",
+    "date": "2026-11-23T08:30",
+    "de": "Mme Amel Gharbi",
+    "titre": "Validations PRM",
+    "texte": "Validation du TP4 : sous-groupe 1_1 le lundi 30 novembre à 13h30, sous-groupe 1_2 le lundi 7 décembre à 13h30.",
+    "attendu": [{ "groupe": "RT4/1", "date": "2026-12-07", "matiere": "PRM" }]
+  }
+]

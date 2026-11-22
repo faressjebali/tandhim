@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Lint, typecheck, tests
+    runs-on: ubuntu-latest
+    env:
+      TZ: Africa/Tunis
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          # Le cache automatique de la v5 cherche pnpm avant qu'il soit activé (corepack, ci-dessous).
+          package-manager-cache: false
+      # pnpm, à la version du champ « packageManager » de package.json.
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test

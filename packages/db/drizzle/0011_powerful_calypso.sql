@@ -1,0 +1,1 @@
+ALTER TABLE `sync_status` ADD `en_echec_depuis` text;

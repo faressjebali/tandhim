@@ -1,0 +1,62 @@
+# Déploiement sur le PC serveur (Ubuntu, 4 Go de RAM).
+# Les images sont construites sur le PC de développement puis envoyées directement au
+# serveur par SSH : `pnpm deploy:serveur`. Le serveur ne construit rien (disque dur lent).
+# En local, `docker compose up -d --build` construit toujours les images sur place.
+# Budget mémoire visé : < 2,5 Go au total (SPEC §4).
+# L'app n'écoute que sur 127.0.0.1 : on y accède via `tailscale serve` (HTTPS, privé).
+
+name: tandhim
+
+x-common: &common
+  restart: unless-stopped
+  # format raw : le .env est lu tel quel (les « $ » d'un secret ne sont pas des variables).
+  env_file:
+    - path: ../.env
+      format: raw
+  environment:
+    TZ: Africa/Tunis
+    DATA_DIR: /data
+  volumes:
+    - app-data:/data
+  logging:
+    driver: json-file
+    options: { max-size: '10m', max-file: '3' }
+
+services:
+  web:
+    <<: *common
+    build: { context: .., dockerfile: infra/Dockerfile, target: web }
+    image: tandhim-web:${TANDHIM_TAG:-latest}
+    ports:
+      - '127.0.0.1:3000:3000'
+    mem_limit: 512m
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      # Le worker applique les migrations : le web attend qu'il soit prêt.
+      worker: { condition: service_healthy }
+
+  worker:
+    <<: *common
+    build: { context: .., dockerfile: infra/Dockerfile, target: worker }
+    image: tandhim-worker:${TANDHIM_TAG:-latest}
+    mem_limit: 384m
+    healthcheck:
+      test: ['CMD', 'test', '-f', '/data/.worker-pret']
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 60s
+
+  # Phase 2 : serveur Matrix léger + pont mautrix-meta (choix documenté dans docs/decisions/).
+
+volumes:
+  # SQLite (WAL), cache des fichiers Drive/Classroom, sauvegardes.
+  app-data:

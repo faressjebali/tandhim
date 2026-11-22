@@ -1,0 +1,1 @@
+ALTER TABLE `source_items` ADD `passages` text DEFAULT '[]' NOT NULL;

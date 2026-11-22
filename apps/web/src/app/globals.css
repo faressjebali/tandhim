@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+
+/*
+ * Tandhim — style « rétro néo-brutaliste doux » choisi par Fares (docs/design.md) :
+ * fond crème, contours encre épais, ombres pleines décalées, palette rétro.
+ * Toujours en mode clair (décision de Fares, 20/11/2026), même si l'appareil est en sombre.
+ */
+:root {
+  --papier: #fff3dc;
+  --surface: #fffcf5;
+  --encre: #1e1b2e;
+  --gris: #6b6478;
+  --ligne: #ead9b8;
+  --ombre: #1e1b2e;
+  --jaune: #ffc567;
+  --rose: #fb7da8;
+  --corail: #fd5a46;
+  --violet: #552cb7;
+  --vert: #00995e;
+  --bleu: #058cd7;
+  --sur-couleur: #1e1b2e;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-papier: var(--papier);
+  --color-surface: var(--surface);
+  --color-encre: var(--encre);
+  --color-gris: var(--gris);
+  --color-ligne: var(--ligne);
+  --color-jaune: var(--jaune);
+  --color-rose: var(--rose);
+  --color-corail: var(--corail);
+  --color-violet: var(--violet);
+  --color-vert: var(--vert);
+  --color-bleu: var(--bleu);
+  /* Texte posé sur un fond coloré (pastels) : toujours encre foncée. */
+  --color-sur-couleur: var(--sur-couleur);
+  --font-sans: var(--font-readex), system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--papier);
+  color: var(--encre);
+  font-family: var(--font-sans);
+  line-height: 1.45;
+  /* Règle générale : un long mot ou une longue adresse se coupe au lieu de déborder de l'écran. */
+  overflow-wrap: anywhere;
+}
+
+/*
+ * Champs date / heure : sur iPhone, Safari leur impose une largeur minimale qui fait déborder la
+ * page. Règle générale pour tous les formulaires (et texte aligné à gauche comme les autres champs).
+ */
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+input::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+@layer components {
+  /* Bloc néo-brutaliste : contour encre + ombre pleine décalée. */
+  .bloc {
+    border: 2px solid var(--encre);
+    border-radius: 18px;
+    box-shadow: 3px 3px 0 var(--ombre);
+  }
+  .bloc-presse {
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease;
+  }
+  .bloc-presse:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ombre);
+  }
+  .pastille {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: 1.5px solid var(--encre);
+    border-radius: 999px;
+    padding: 0.05rem 0.55rem;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+}
+
+.titre {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.chiffres {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Défilement horizontal sans barre visible (bande de jours, cartes de projets). */
+.defile-x {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.defile-x::-webkit-scrollbar {
+  display: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--bleu);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

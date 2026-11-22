@@ -1,0 +1,20 @@
+CREATE TABLE `changements_seance` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`subject_id` integer NOT NULL,
+	`jour` text NOT NULL,
+	`creneau` text,
+	`nature` text NOT NULL,
+	`nouveau_jour` text,
+	`nouveau_creneau` text,
+	`lien` text,
+	`salle` text,
+	`source_item_id` integer,
+	`citation` text,
+	`confidence` integer,
+	`ignore` integer DEFAULT false NOT NULL,
+	`notifie_le` text,
+	`created_at` text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+	`updated_at` text DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')) NOT NULL,
+	FOREIGN KEY (`subject_id`) REFERENCES `subjects`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`source_item_id`) REFERENCES `source_items`(`id`) ON UPDATE no action ON DELETE set null
+);

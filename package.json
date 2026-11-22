@@ -1,0 +1,39 @@
+{
+  "name": "tandhim",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @tandhim/web --filter @tandhim/worker dev",
+    "demo": "node infra/demo.mjs",
+    "build": "pnpm --filter @tandhim/web build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:google": "pnpm --filter @tandhim/worker check:google",
+    "check:gemini": "pnpm --filter @tandhim/worker check:gemini",
+    "db:generate": "pnpm --filter @tandhim/db db:generate",
+    "db:migrate": "pnpm --filter @tandhim/db db:migrate",
+    "db:seed": "pnpm --filter @tandhim/db db:seed",
+    "deploy:serveur": "bash infra/deployer-serveur.sh",
+    "restaurer:serveur": "bash infra/restaurer-serveur.sh",
+    "sauvegardes:copier": "bash infra/copier-sauvegardes.sh",
+    "controle:donnees": "node infra/controle-donnees.mjs --commit"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.2",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.1"
+  }
+}
